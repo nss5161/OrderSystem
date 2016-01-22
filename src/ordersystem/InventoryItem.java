@@ -9,7 +9,7 @@ package ordersystem;
  *
  * @author Nick
  */
-public class inventoryItem extends inventory {
+public class InventoryItem {
     private int itemID;
     private String itemName;
     private double itemPrice;
@@ -31,19 +31,17 @@ public class inventoryItem extends inventory {
     public void setDescription(String d){
         d = description;
     }
-    
-    
     int sku;
-    String description;
+    String Description;
     int amountOnHand;
     double unitCost;
     double unitPrice;
     
-    public setAmountOnHand(int amount){
-        this.amountOnHand = amount;
-    }
-    
-    public setUnitCost(){
-        this.unitCost = cost;
+    public InventoryItem(int sku, String description1, int amountOnHand, double unitCost, double unitPrice){
+        this.sku = sku;
+        this.description = description1;
+        this.amountOnHand = amountOnHand;
+        this. unitCost = unitCost;
+        this.unitPrice = unitPrice;
     }
 }

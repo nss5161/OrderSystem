@@ -9,9 +9,9 @@ package ordersystem;
  *
  * @author Nick
  */
-public class order extends transaction{
-   inventoryItem itemOrdered;
-   customer customerMakingOrder;
+public class Order {
+   InventoryItem itemOrdered;
+   Customer customerMakingOrder;
    int orderAmount;
    
 }

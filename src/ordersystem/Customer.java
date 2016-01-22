@@ -9,7 +9,7 @@ package ordersystem;
  *
  * @author Nick
  */
-public class customer extends transaction{
+public class Customer {
     private int customerID;
     private String customerName;
     
