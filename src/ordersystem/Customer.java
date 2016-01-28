@@ -5,6 +5,8 @@
  */
 package ordersystem;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Nick
@@ -12,10 +14,16 @@ package ordersystem;
 public class Customer {
     private int customerID;
     private String customerName;
-    
+    private ArrayList<Customer> customerList;
+   
     public Customer(int number, String name){
         this.customerID = number;
         this.customerName = name;
+        this.customerList = new ArrayList<>();
+    }
+    
+    public void addCustomer(Customer cust){
+        customerList.add(cust);
     }
     
     

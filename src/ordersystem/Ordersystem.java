@@ -21,6 +21,7 @@ public class Ordersystem{
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        TransactionMaker nejf = new TransactionMaker();
         String OrderName = "name 1";
         int n = Integer.parseInt(args[0]);
         Transaction[] Transaction = new Transaction[n];
