@@ -11,4 +11,9 @@ package ordersystem;
  */
 public class TransactionMaker {
     
+    public static void generateCustomer(){
+        Customer customer = new Customer(1000, "John Smith");
+        
+    }
+    
 }
