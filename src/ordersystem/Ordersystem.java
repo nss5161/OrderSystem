@@ -22,6 +22,7 @@ public class Ordersystem{
      */
     public static void main(String[] args) {
         TransactionMaker nejf = new TransactionMaker();
+        nejf.generateCustomer();
         String OrderName = "name 1";
         int n = Integer.parseInt(args[0]);
         Transaction[] Transaction = new Transaction[n];
