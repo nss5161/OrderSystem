@@ -10,7 +10,7 @@ import java.util.*;
 import static javax.swing.UIManager.put;
 import ordersystem.InventoryItem;
 import ordersystem.Transaction;
-
+import ordersystem.TransactionMaker;
 /**
  *
  * @author Nick
@@ -21,8 +21,11 @@ public class Ordersystem{
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        TransactionMaker nejf = new TransactionMaker();
-        nejf.generateCustomer();
+        TransactionMaker trial = new TransactionMaker();
+        trial.generateCustomer();
+        
+        
+        
         String OrderName = "name 1";
         int n = Integer.parseInt(args[0]);
         Transaction[] Transaction = new Transaction[n];
@@ -36,7 +39,7 @@ public class Ordersystem{
             orderSku = (int) Math.random() * numberOfItems + 1;
             //look up sku in inventory file to get inventoryItem fields
             //gives you description onHand, unitcost, unitprice
-            InventoryItem itemOrdered = new InventoryItem(orderSku, OrderName, numberOfItems, price, price2);
+           // InventoryItem itemOrdered = new InventoryItem(orderSku, OrderName, numberOfItems, price, price2);
             //logic to tell whether or not item is in stodck or not
             //if not in stock, cancel order
             //if in stock, completed roder, geneate sal transaction

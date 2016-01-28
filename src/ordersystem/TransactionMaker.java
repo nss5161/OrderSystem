@@ -13,8 +13,7 @@ public class TransactionMaker {
     
     public void generateCustomer(){
         Customer customer = new Customer(1000, "John Smith");
-        System.out.println("fajkf");
-        
+        InventoryItem trial = new InventoryItem(12345, "ITEM NAME", "Insert Item Description", 100, 10.00, 20.00, 50.00);
     }
     
 }

@@ -5,19 +5,36 @@
  */
 package ordersystem;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Nick
  */
 public class InventoryItem {
-    private int itemID;
     private String itemName;
     private double itemPrice;
     private String description;
+    private int sku;
+    int amountOnHand;
+    double unitCost;
+    double unitPrice;
+    private ArrayList<InventoryItem> inventory;
     
+    public InventoryItem(int sku, String name,  String description1, int amountOnHand, double unitCost, double unitPrice, double itemPrice){
+        this.sku = sku;
+        this.itemName = name;
+        this.itemPrice = itemPrice;
+        this.description = description1;
+        this.amountOnHand = amountOnHand;
+        this. unitCost = unitCost;
+        this.unitPrice = unitPrice;
+        this.inventory = new ArrayList<>();
+        inventory.add(this);
+    }
     
-    public void setItemID(int ii){
-        ii = itemID;
+    public void setSku(int ii){
+        ii = sku;
     }
     
     public void setItemName(String name){
@@ -30,18 +47,5 @@ public class InventoryItem {
     
     public void setDescription(String d){
         d = description;
-    }
-    int sku;
-    String Description;
-    int amountOnHand;
-    double unitCost;
-    double unitPrice;
-    
-    public InventoryItem(int sku, String description1, int amountOnHand, double unitCost, double unitPrice){
-        this.sku = sku;
-        this.description = description1;
-        this.amountOnHand = amountOnHand;
-        this. unitCost = unitCost;
-        this.unitPrice = unitPrice;
     }
 }

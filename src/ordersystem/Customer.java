@@ -14,21 +14,14 @@ import java.util.ArrayList;
 public class Customer {
     private int customerID;
     private String customerName;
-    private String entryHolder;
-    private ArrayList<String> customerList;
+    private ArrayList<Customer> customerList;
    
     public Customer(int number, String name){
         this.customerID = number;
         this.customerName = name;
         this.customerList = new ArrayList<>();
-        entryHolder = customerName + Integer.toString(customerID);
-        addCustomer(entryHolder);
+        customerList.add(this);
     }
-    
-    public void addCustomer(String num){
-        customerList.add(num);
-    }
-    
     
     public String getCustomerName(){
         return customerName;
