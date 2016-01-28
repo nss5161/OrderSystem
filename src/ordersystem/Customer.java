@@ -11,29 +11,83 @@ import java.util.ArrayList;
  *
  * @author Nick
  */
+
 public class Customer {
-    private int customerID;
-    private String customerName;
+    private int customerID, phone;
+    private String firstName, lastName, address, email;
     private ArrayList<Customer> customerList;
+    private final ArrayList<Transaction> transactionHist;
    
-    public Customer(int number, String name){
-        this.customerID = number;
-        this.customerName = name;
+     
+    public Customer(int newID, int newPhone, String fName, String lName, String newAddress, String newEmail){
+        this.customerID = newID;
+        this.phone = newPhone;
+        this.firstName = fName;
+        this.lastName = lName;
+        this.address = newAddress;
+        this.email = newEmail;
         this.customerList = new ArrayList<>();
         customerList.add(this);
+        this.transactionHist = new ArrayList<>();
+    }
+
+    Customer(int i, String john_Smith) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
-    public String getCustomerName(){
-        return customerName;
+    public int getCustomerID() {
+        return this.customerID;
     }
     
-    public void setOrderName(String custName){
-        custName = customerName;
+    public int getPhoneNumber(){
+        return this.phone;
     }
     
-    public void setID(int custID){
-        custID = customerID;
+    public String getFirstName(){
+        return this.firstName;
     }
     
+    public String getLastName(){
+        return this.lastName;
+    }
     
+    public String getAddress(){
+        return this.address;
+    }
+    
+    public String getEmail(){
+        return this.email;
+    }
+    
+    public void setCustomerID(int newID) {
+        this.customerID = newID;
+    }
+    
+    public void setPhoneNumber(int newPhone) {
+        this.phone = newPhone;
+    }
+    
+    public void setFirst(String fName) {
+        this.firstName = fName;
+    }
+    
+    public void setLastName(String lName) {
+        this.lastName = lName;
+    }
+    
+    public void setAddress(String newAddress){
+        this.address = newAddress;
+    }
+    
+    public void setEmail(String newEmail){
+        this.email = newEmail;
+    }
+    
+    public void addTransaction(Transaction newTransaction) {
+        this.transactionHist.add(newTransaction);
+    }
+    
+    public ArrayList<Transaction> getTransactions() {
+        return this.transactionHist;
+    }
 }
