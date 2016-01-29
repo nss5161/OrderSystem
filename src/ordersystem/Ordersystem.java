@@ -5,12 +5,7 @@ package ordersystem;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-import static java.awt.SystemColor.info;
-import java.util.*;
-import static javax.swing.UIManager.put;
-import ordersystem.InventoryItem;
-import ordersystem.Transaction;
-import ordersystem.TransactionMaker;
+import java.util.Scanner;
 /**
  *
  * @author Nick
@@ -21,38 +16,17 @@ public class Ordersystem{
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        TransactionMaker trial = new TransactionMaker();
-        trial.generateCustomer();
+        Scanner scanner = new Scanner(System.in);
         
-        
-        
-        String OrderName = "name 1";
-        int n = Integer.parseInt(args[0]);
-        Transaction[] Transaction = new Transaction[n];
-        int transactionID;
-        int orderSku;
-        int numberOfItems = 0; 
-        double price = 0.0;
-        double price2 = 0.0;
-        for (int k = 0; k > n; k++) {
-            transactionID = k;
-            orderSku = (int) Math.random() * numberOfItems + 1;
-            //look up sku in inventory file to get inventoryItem fields
-            //gives you description onHand, unitcost, unitprice
-           // InventoryItem itemOrdered = new InventoryItem(orderSku, OrderName, numberOfItems, price, price2);
-            //logic to tell whether or not item is in stodck or not
-            //if not in stock, cancel order
-            //if in stock, completed roder, geneate sal transaction
+        produceSampleCustomers();
+    }
 
-            //GENERATE TRANSACTION POLYMORPHICALLY
-
-            //transaction[k] = new order(...)
-            //transaction[k] = new Sale(...)
-            //transaction[k] = new Return(...)
-            //transaction[k] = new Purchase(...)
-
-            //transaction[].makeTransaction();
-        }
+    private static void produceSampleCustomers() {
+        Customer customer1 = new Customer(205, "John", "Smith", "536 Hill Road", "675-737-6473", "JSS@psu.edu");
+        Customer customer2 = new Customer(205, "Tim", "Margret", "77 Bill Path", "984-812-6473", "TWH@psu.edu");
+        Customer customer3 = new Customer(205, "Jan", "Spam", "216 Bark Road", "675-773-9023", "LLS@psu.edu");
+        Customer customer4 = new Customer(205, "Will", "Pickle", "47 Tree Lane", "850-095-6473", "NID@psu.edu");
+        Customer customer5 = new Customer(205, "Mary", "Goodwin", "949 Leaf Avenue", "006-623-6473", "YOU@psu.edu");
     }
     
 }

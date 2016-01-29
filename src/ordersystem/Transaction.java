@@ -11,12 +11,12 @@ package ordersystem;
  */
 public abstract class Transaction{
     
-    int transactionID;
+    private final int transactionID;
     
-    public Transaction(int id){
-        transactionID = id;
+    public Transaction(int newID){
+        this.transactionID = newID;
     }
-    public int getTransactionID(){
-        return transactionID;
+    
+    public void setTransactionID(int newID){
     }
 }

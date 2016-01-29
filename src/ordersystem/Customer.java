@@ -11,15 +11,14 @@ import java.util.ArrayList;
  *
  * @author Nick
  */
-
 public class Customer {
-    private int customerID, phone;
-    private String firstName, lastName, address, email;
+    private final int customerID;
+    private String firstName, lastName, address, email, phone;
     private ArrayList<Customer> customerList;
     private final ArrayList<Transaction> transactionHist;
    
      
-    public Customer(int newID, int newPhone, String fName, String lName, String newAddress, String newEmail){
+    public Customer(int newID, String fName, String lName, String newAddress, String newPhone, String newEmail){
         this.customerID = newID;
         this.phone = newPhone;
         this.firstName = fName;
@@ -27,19 +26,14 @@ public class Customer {
         this.address = newAddress;
         this.email = newEmail;
         this.customerList = new ArrayList<>();
-        customerList.add(this);
         this.transactionHist = new ArrayList<>();
-    }
-
-    Customer(int i, String john_Smith) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     public int getCustomerID() {
         return this.customerID;
     }
     
-    public int getPhoneNumber(){
+    public String getPhoneNumber(){
         return this.phone;
     }
     
@@ -59,11 +53,7 @@ public class Customer {
         return this.email;
     }
     
-    public void setCustomerID(int newID) {
-        this.customerID = newID;
-    }
-    
-    public void setPhoneNumber(int newPhone) {
+    public void setPhoneNumber(String newPhone) {
         this.phone = newPhone;
     }
     
