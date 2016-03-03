@@ -12,20 +12,21 @@ import java.util.ArrayList;
  * @author Nick
  */
 public class Customer {
+    private static int nextCustomerID;
+    
     private final int customerID;
     private String firstName, lastName, address, email, phone;
-    private ArrayList<Customer> customerList;
-    private final ArrayList<Transaction> transactionHist;
+    private ArrayList<Transaction> transactionHist;
    
      
     public Customer(int newID, String fName, String lName, String newAddress, String newPhone, String newEmail){
         this.customerID = newID;
+        Customer.nextCustomerID++;
         this.phone = newPhone;
         this.firstName = fName;
         this.lastName = lName;
         this.address = newAddress;
         this.email = newEmail;
-        this.customerList = new ArrayList<>();
         this.transactionHist = new ArrayList<>();
     }
     
@@ -73,11 +74,39 @@ public class Customer {
         this.email = newEmail;
     }
     
+    public String getFullName(){
+        return this.firstName + " " + this.lastName;
+    }
+    
     public void addTransaction(Transaction newTransaction) {
         this.transactionHist.add(newTransaction);
     }
     
     public ArrayList<Transaction> getTransactions() {
         return this.transactionHist;
+    }
+    
+    public Transaction getTransactionByID(int orderIDToGet) {
+        for (Transaction theTransaction : this.transactionHist) {
+            if (theTransaction.getOrderID() == orderIDToGet) {
+                return theTransaction;
+            }
+        }
+        return null;
+    }
+    
+    public void printOrderHistory() {
+        System.out.println("\n------------------------------------------------------------------------------------------------\n");
+        System.out.println("Customer Order History (" + this.getFullName() + "): ");
+        if(this.transactionHist.size() > 0) {
+            System.out.println("\nOrder ID\t\tProduct ID\t\t\t\t\tQuantity\tTotal");
+            this.transactionHist.stream().forEach((theTransaction) -> {
+                theTransaction.printTransactionDetails();
+                //System.out.println("Order ID: " + theTransaction.getOrderID() + "; Product ID: " + theTransaction.getProductID() + "; Total: $" + HelperMethods.priceToString(theTransaction.getTotal()));
+            });
+        } else {
+            System.out.println("This customer has not placed any orders yet.");
+        }
+        System.out.println("\n------------------------------------------------------------------------------------------------\n");
     }
 }

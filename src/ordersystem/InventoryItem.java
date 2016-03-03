@@ -12,18 +12,19 @@ import java.util.ArrayList;
  * @author Nick
  */
 public class InventoryItem {
+    private int nextInventoryID;
+    
     private String itemName, description;
     private double itemPrice;
     private int itemID, quantity;
-    private ArrayList<InventoryItem> inventory;
     
     public InventoryItem(int newID, String name, String newDescription, double price, int newQuantity){
-        this.itemName = name;
-        this.itemPrice = price;
         this.itemID = newID;
+        nextInventoryID++;
+        this.itemName = name;
         this.description = newDescription;
-        this.quantity = newQuantity;
-        this.inventory = new ArrayList<>();
+        this.itemPrice = price;
+        this.quantity = 0;
     }
     
     public String getItemName(){
@@ -64,14 +65,6 @@ public class InventoryItem {
     
     public void setQuantity(int newQuantity){
         this.quantity = newQuantity;
-    }
-
-    public void addItem(InventoryItem newInventoryItem) {
-        this.inventory.add(newInventoryItem);
-    }
-    
-    public ArrayList<InventoryItem> getInventoryItem() {
-        return this.inventory;
     }
     
     public void getInventoryDetails(){

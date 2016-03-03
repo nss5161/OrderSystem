@@ -19,6 +19,7 @@ public class Ordersystem{
         Scanner scanner = new Scanner(System.in);
         
         produceSampleCustomers();
+        
     }
 
     private static void produceSampleCustomers() {

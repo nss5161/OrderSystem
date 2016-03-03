@@ -19,4 +19,16 @@ public abstract class Transaction{
     
     public void setTransactionID(int newID){
     }
+    
+    public abstract int getOrderID();
+    
+    public abstract int getTotal();
+    
+    public abstract int getProductID();
+    
+    public abstract int getQuantity();
+    
+    public abstract int getType();
+    
+    public abstract int printTransactionDetails();
 }

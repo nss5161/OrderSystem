@@ -10,5 +10,4 @@ package ordersystem;
  * @author nss5161
  */
 public class Sale {
-    
 }
