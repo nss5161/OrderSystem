@@ -16,9 +16,10 @@ public class Ordersystem{
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        
         produceSampleCustomers();
+        
+        CustomerCollection.getCustomers().getCustomerByID(0).printOrderHistory();
+        InventoryCollection.getInventory().printInventory();
         
     }
 
@@ -28,6 +29,10 @@ public class Ordersystem{
         Customer customer3 = new Customer(205, "Jan", "Spam", "216 Bark Road", "675-773-9023", "LLS@psu.edu");
         Customer customer4 = new Customer(205, "Will", "Pickle", "47 Tree Lane", "850-095-6473", "NID@psu.edu");
         Customer customer5 = new Customer(205, "Mary", "Goodwin", "949 Leaf Avenue", "006-623-6473", "YOU@psu.edu");
+    }
+    
+    private static void printSampleCustomers(){
+        System.out.println();
     }
     
 }

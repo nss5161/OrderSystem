@@ -67,7 +67,11 @@ public class InventoryItem {
         this.quantity = newQuantity;
     }
     
-    public void getInventoryDetails(){
+    public void getInventoryItem(){
         System.out.print(this.itemID + "---" + this.itemName + "----" + this.description + "---" + this.itemPrice + "---" + this.quantity);
+    }
+    
+    public void printInventoryItem() {
+        System.out.println(this.itemID + "\t\t" + this.description + "\t\t$" + this.itemPrice + "\t\t" + this.quantity);
     }
 }
