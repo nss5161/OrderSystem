@@ -42,7 +42,6 @@ public class Ordersystem{
                             transactionThreads[i].start();
                             System.out.println("New thread started.");
                         } catch (java.lang.OutOfMemoryError e) {
-                            // Print error if there are too many active threads – it appears 2024 is the maximum threads configured
                             skippedThreads++;
                             System.out.println("Can't create new thread - too many threads! – Loop #" + i + " – Active Threads: " + java.lang.Thread.activeCount());
                         } 

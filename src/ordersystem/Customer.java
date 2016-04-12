@@ -102,7 +102,6 @@ public class Customer {
             System.out.println("\nOrder ID\t\tProduct ID\t\t\t\t\tQuantity\tTotal");
             this.transactionHist.stream().forEach((theTransaction) -> {
                 theTransaction.printTransactionDetails();
-                //System.out.println("Order ID: " + theTransaction.getOrderID() + "; Product ID: " + theTransaction.getProductID() + "; Total: $" + HelperMethods.priceToString(theTransaction.getTotal()));
             });
         } else {
             System.out.println("This customer has not placed any orders yet.");
