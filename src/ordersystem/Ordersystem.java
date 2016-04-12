@@ -77,39 +77,39 @@ public class Ordersystem{
         
         System.out.println("Skipped threads: " + skippedThreads);
         System.out.println("There should be " + (430 + skippedThreads) + " melatonin units remaining.");
-        System.out.println("There are " + Inventory.getInventory().getItemByID(1007).getQuantity() + " melatonin units remaining.");
+        System.out.println("There are " + InventoryCollection.getInventory().getItemByID(1007).getQuantity() + " melatonin units remaining.");
     }
 
     public static void generateSampleProducts() {
-        InventoryItem testItem = new InventoryItem(12.95, "Movo WS3 Dead Cat Windscreen", 28); // (price, description, quantity)
-        Inventory.getInventory().addItem(testItem);
+        InventoryItem testItem = new InventoryItem(123, "Brown Dog", "A pet with 4 legs, two ears, and a nose." 200.00, 15); // (ID, name, description, price, quantity)
+        InventoryCollection.getInventory().addItem(testItem);
         
         testItem = new InventoryItem(22.07, "Shimano UN55 Bracket\t", 12); // (price, description, quantity)
-        Inventory.getInventory().addItem(testItem);
+        InventoryCollection.getInventory().addItem(testItem);
         
         testItem = new InventoryItem(10.40, "Nag Champa Incense Sticks", 120); // (price, description, quantity)
-        Inventory.getInventory().addItem(testItem);
+        InventoryCollection.getInventory().addItem(testItem);
         
         testItem = new InventoryItem(6.44, "99% Isopropyl Alcohol (Pint)", 223); // (price, description, quantity)
-        Inventory.getInventory().addItem(testItem);
+        InventoryCollection.getInventory().addItem(testItem);
         
         testItem = new InventoryItem(12.99, "Blue Racquetballs (3-pack)", 33); // (price, description, quantity)
-        Inventory.getInventory().addItem(testItem);
+        InventoryCollection.getInventory().addItem(testItem);
         
         testItem = new InventoryItem(49.95, "Photive Bluetooth Earbuds", 43); // (price, description, quantity)
-        Inventory.getInventory().addItem(testItem);
+        InventoryCollection.getInventory().addItem(testItem);
         
         testItem = new InventoryItem(16.77, "Melatonin (3mg)\t\t", 430); // (price, description, quantity)
-        Inventory.getInventory().addItem(testItem);
+        InventoryCollection.getInventory().addItem(testItem);
         
         testItem = new InventoryItem(8.36, "Ahmad English Tea #1\t", 7); // (price, description, quantity)
-        Inventory.getInventory().addItem(testItem);
+        InventoryCollection.getInventory().addItem(testItem);
         
         testItem = new InventoryItem(15.95, "Vertical Vortex Toy\t", 70); // (price, description, quantity)
-        Inventory.getInventory().addItem(testItem);
+        InventoryCollection.getInventory().addItem(testItem);
         
         testItem = new InventoryItem(13.32, "Seirus Innovation 8030\t", 14); // (price, description, quantity)
-        Inventory.getInventory().addItem(testItem);
+        InventoryCollection.getInventory().addItem(testItem);
         
     }
     
