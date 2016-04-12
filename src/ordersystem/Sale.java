@@ -22,20 +22,17 @@ public class Sale {
     
     public synchronized final boolean processTransaction(int theProductID, int theQuantity, Customer theCustomer) {
         if(InventoryCollection.getInventory().getItemByID(theProductID).getQuantity() >= theQuantity) {
-            // Valid transaction; deduct quantity and process order
             InventoryCollection.getInventory().getItemByID(theProductID).setQuantity(InventoryCollection.getInventory().getItemByID(theProductID).getQuantity() - theQuantity);
             int newOrderID = Transaction.getNextOrderID();
             this.orderID = newOrderID;
             this.total = (InventoryCollection.getInventory().getItemByID(theProductID).getItemPrice()) * (theQuantity);
             this.productID = theProductID;
             this.quantity = theQuantity;
-            this.type = 0; // 0 = sale
+            this.type = 0;
             
-            //CustomerCollection.getCustomers().getCustomerByID(theCustomer.getCustomerID()).addTransaction(this);
             System.out.println("Valid transaction. Successful sale of " + theQuantity + " " + InventoryCollection.getInventory().getItemByID(theProductID).getDescription() + "(s) to " + theCustomer.getFullName() + " for a total of $" + this.total + "." + " (Order ID: " + this.orderID + ")");
             return true;
         }else{
-            // Offer to allow sale of entire current stock instead
             System.out.println("The quantity of " + InventoryCollection.getInventory().getItemByID(theProductID).getDescription() + " you requested is not available. Would you like to purchase the remaining stock (" + InventoryCollection.getInventory().getItemByID(theProductID).getQuantity() + ")? [y/n]");
             return false;   
         }

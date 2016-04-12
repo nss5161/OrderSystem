@@ -21,18 +21,104 @@ public class Ordersystem{
         CustomerCollection.getCustomers().getCustomerByID(0).printOrderHistory();
         InventoryCollection.getInventory().printInventory();
         
+        CustomerThread transactionThread;
+        
     }
 
-    private static void produceSampleCustomers() {
-        Customer customer1 = new Customer(205, "John", "Smith", "536 Hill Road", "675-737-6473", "JSS@psu.edu");
-        Customer customer2 = new Customer(205, "Tim", "Margret", "77 Bill Path", "984-812-6473", "TWH@psu.edu");
-        Customer customer3 = new Customer(205, "Jan", "Spam", "216 Bark Road", "675-773-9023", "LLS@psu.edu");
-        Customer customer4 = new Customer(205, "Will", "Pickle", "47 Tree Lane", "850-095-6473", "NID@psu.edu");
-        Customer customer5 = new Customer(205, "Mary", "Goodwin", "949 Leaf Avenue", "006-623-6473", "YOU@psu.edu");
+    int melatoninToAdd = 50000;
+        CustomerThread[] transactionThreads = new CustomerThread[melatoninToAdd];
+        InventoryAdjustment moreMelatonin = new InventoryAdjustment(1007, melatoninToAdd, CustomerList.getCustomers().getCustomerByID(0)); // Add 50,000 melatonin units to the inventory
+        int skippedThreads = 0;
+        for (int i = 0; i < melatoninToAdd; i++) {
+            int customerID = HelperMethods.randomInteger(1, 100);
+            int itemID = 1007;
+            int quantity = 1;
+            transactionThreads[i] = new CustomerThread(0, itemID, quantity, customerID);           
+        }
+        for (int i = 0; i < transactionThreads.length; i++) {
+            synchronized(transactionThreads[i]) {
+                try {
+                        try {
+                            transactionThreads[i].start();
+                            System.out.println("New thread started.");
+                        } catch (java.lang.OutOfMemoryError e) {
+                            // Print error if there are too many active threads – it appears 2024 is the maximum threads configured
+                            skippedThreads++;
+                            System.out.println("Can't create new thread - too many threads! – Loop #" + i + " – Active Threads: " + java.lang.Thread.activeCount());
+                        } 
+                        transactionThreads[i].wait();
+                } catch(InterruptedException e) {
+                    System.out.println("Had to wait!");
+                }
+            }
+        }
+        System.out.println("Thread count: " + Thread.activeCount());
+
+        boolean threadsAreAlive;
+        int loops = 0;
+        do {
+            loops++;
+            threadsAreAlive = false;
+            for (CustomerThread currentTransactionThread : transactionThreads) {
+                threadsAreAlive = currentTransactionThread.isAlive() || threadsAreAlive;
+            }
+        } while(threadsAreAlive);
+        
+        System.out.println("Threads alive loops: " + loops);
+        
+        CustomerList.getCustomers().getCustomerByID(0).printOrderHistory();
+            
+        Inventory.getInventory().printInventoryWithInventoryValue();
+        
+        System.out.println("Skipped threads: " + skippedThreads);
+        System.out.println("There should be " + (430 + skippedThreads) + " melatonin units remaining.");
+        System.out.println("There are " + Inventory.getInventory().getItemByID(1007).getQuantity() + " melatonin units remaining.");
+    }
+
+    public static void generateSampleProducts() {
+        InventoryItem testItem = new InventoryItem(12.95, "Movo WS3 Dead Cat Windscreen", 28); // (price, description, quantity)
+        Inventory.getInventory().addItem(testItem);
+        
+        testItem = new InventoryItem(22.07, "Shimano UN55 Bracket\t", 12); // (price, description, quantity)
+        Inventory.getInventory().addItem(testItem);
+        
+        testItem = new InventoryItem(10.40, "Nag Champa Incense Sticks", 120); // (price, description, quantity)
+        Inventory.getInventory().addItem(testItem);
+        
+        testItem = new InventoryItem(6.44, "99% Isopropyl Alcohol (Pint)", 223); // (price, description, quantity)
+        Inventory.getInventory().addItem(testItem);
+        
+        testItem = new InventoryItem(12.99, "Blue Racquetballs (3-pack)", 33); // (price, description, quantity)
+        Inventory.getInventory().addItem(testItem);
+        
+        testItem = new InventoryItem(49.95, "Photive Bluetooth Earbuds", 43); // (price, description, quantity)
+        Inventory.getInventory().addItem(testItem);
+        
+        testItem = new InventoryItem(16.77, "Melatonin (3mg)\t\t", 430); // (price, description, quantity)
+        Inventory.getInventory().addItem(testItem);
+        
+        testItem = new InventoryItem(8.36, "Ahmad English Tea #1\t", 7); // (price, description, quantity)
+        Inventory.getInventory().addItem(testItem);
+        
+        testItem = new InventoryItem(15.95, "Vertical Vortex Toy\t", 70); // (price, description, quantity)
+        Inventory.getInventory().addItem(testItem);
+        
+        testItem = new InventoryItem(13.32, "Seirus Innovation 8030\t", 14); // (price, description, quantity)
+        Inventory.getInventory().addItem(testItem);
+        
     }
     
-    private static void printSampleCustomers(){
-        System.out.println();
+    public static void generateSampleCustomers() {
+        // The main test customer we use in the demo
+        Customer customer = new Customer("123 Test St.", "Apt. #14", "State College", "PA", "USA", 16801, "Bob", "Smith", 1235555555);
+        CustomerList.getCustomers().addCustomer(customer);
+        
+        for(int i = 0; i < 100; i++) {
+            customer = new Customer(i + " Test St.", "Apt. #" + (int)(i/5), "State College", "PA", "USA", 16801, "Test", "Customer " + (i+1), 1235555555);
+            CustomerList.getCustomers().addCustomer(customer);
+        }
     }
+    
+}
     
 }
