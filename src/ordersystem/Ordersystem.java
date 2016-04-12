@@ -16,16 +16,21 @@ public class Ordersystem{
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        produceSampleCustomers();
-        
-        CustomerCollection.getCustomers().getCustomerByID(0).printOrderHistory();
-        InventoryCollection.getInventory().printInventory();
-        
-        CustomerThread transactionThread;
-        
-    }
 
-    int melatoninToAdd = 50000;
+        Scanner scanner = new Scanner(System.in);
+        boolean purchaseRemaining = false;
+               
+        generateSampleCustomers();
+        
+        CustomerList.getCustomers().printCustomers();
+        
+        generateSampleProducts();
+
+        Inventory.getInventory().printInventoryWithInventoryValue();
+
+        CustomerThread transactionThread;
+
+        int melatoninToAdd = 50000;
         CustomerThread[] transactionThreads = new CustomerThread[melatoninToAdd];
         InventoryAdjustment moreMelatonin = new InventoryAdjustment(1007, melatoninToAdd, CustomerList.getCustomers().getCustomerByID(0)); // Add 50,000 melatonin units to the inventory
         int skippedThreads = 0;
@@ -42,6 +47,7 @@ public class Ordersystem{
                             transactionThreads[i].start();
                             System.out.println("New thread started.");
                         } catch (java.lang.OutOfMemoryError e) {
+                            // Print error if there are too many active threads – it appears 2024 is the maximum threads configured
                             skippedThreads++;
                             System.out.println("Can't create new thread - too many threads! – Loop #" + i + " – Active Threads: " + java.lang.Thread.activeCount());
                         } 
@@ -108,7 +114,6 @@ public class Ordersystem{
     }
     
     public static void generateSampleCustomers() {
-        // The main test customer we use in the demo
         Customer customer = new Customer("123 Test St.", "Apt. #14", "State College", "PA", "USA", 16801, "Bob", "Smith", 1235555555);
         CustomerList.getCustomers().addCustomer(customer);
         
@@ -117,7 +122,5 @@ public class Ordersystem{
             CustomerList.getCustomers().addCustomer(customer);
         }
     }
-    
-}
     
 }
